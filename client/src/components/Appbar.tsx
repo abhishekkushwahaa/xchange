@@ -16,7 +16,7 @@ export const Appbar = () => {
             className={`text-xl pl-4 flex flex-col justify-center cursor-pointer text-white`}
             onClick={() => router.push("/")}
           >
-            Exchange
+            XChange
           </div>
           <div
             className={`text-sm pt-1 flex flex-col justify-center pl-8 cursor-pointer ${

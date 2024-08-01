@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
-const myFont = localFont({ src: "./font/font.woff2" });
+const myFont = localFont({ src: "../font/font.woff2" });
 
 export const metadata: Metadata = {
   title: "XChange",

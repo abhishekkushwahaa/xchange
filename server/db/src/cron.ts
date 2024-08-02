@@ -3,7 +3,7 @@ import { Client } from "pg";
 const client = new Client({
   user: "your_user",
   host: "localhost",
-  database: "my_database",
+  database: "xchange",
   password: "your_password",
   port: 5432,
 });

@@ -1,15 +1,31 @@
 import { Client } from "pg";
-import { createClient } from "redis";
+import { createClient } from "redis"; // Adjust the import based on your project structure
 import type { DbMessage } from "./types";
 
-const pgClient = new Client({
-  user: "my-postgres",
-  host: "localhost",
-  database: "my_database",
-  password: "mysecretpassword",
-  port: 5432,
+// Print environment variables for debugging
+console.log({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD || "",
+  port: process.env.DB_PORT,
 });
-pgClient.connect();
+
+const pgClient = new Client({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: parseInt(process.env.DB_PORT || "5432"),
+});
+
+pgClient
+  .connect()
+  .then(() => console.log("Connected to PostgreSQL"))
+  .catch((err) => {
+    console.error("Failed to connect to PostgreSQL:", err);
+    process.exit(1);
+  });
 
 async function main() {
   const redisClient = createClient();
